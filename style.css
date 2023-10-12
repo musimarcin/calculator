@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border: 2px red solid;
+    gap: 16px
+}
+
+#screen {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+}
+
+#last {
+    height: 32px;
+}
+
+#current {
+    height: 64px;
+}
+
+#buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.operand {
+    border: 2px blue solid;
+    padding: 16px;
+    width: 16px;
+    margin: 8px;
+    text-align: center;
+}
