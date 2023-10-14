@@ -21,22 +21,41 @@ body {
 
 #last {
     height: 32px;
+    font-size: 20px;
 }
 
 #current {
     height: 64px;
+    text-align: right;
+    font-size: 40px;
+    font-weight: 900;
 }
 
 #buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    gap: 8px
 }
 
 .operand {
     border: 2px blue solid;
-    padding: 16px;
-    width: 16px;
-    margin: 8px;
-    text-align: center;
+    border-radius: 8px;
+    height: 64px;
+    width: 64px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.operand:hover {
+    filter: brightness(85%);
+}
+
+#evaluate {
+    background-color: blue;
+    margin-bottom: 8px;
+}
+
+#AC {
+    background-color: red;
 }
