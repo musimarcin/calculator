@@ -1,16 +1,18 @@
-const operand = document.querySelectorAll(".number");
+const number = document.querySelectorAll(".number");
 const current = document.querySelector("#current");
 const all_clear = document.querySelector("#AC");
 const clear = document.querySelector("#C");
 const operation = document.querySelectorAll(".operation");
+const evaluate = document.querySelector("#evaluate");
+let operand;
+let firstNumber;
 
 
-
-all_clear.addEventListener("click", () => clearContent());
-operand.forEach(e => e.addEventListener("click", () => addElement(e)));
+all_clear.addEventListener("click", () => clearCurrent());
+number.forEach(e => e.addEventListener("click", () => addElement(e)));
 clear.addEventListener("click", () => deleteLast());
-operand.forEach(e => e.addEventListener("click", () => setOperation(e.textContent)));
-
+operation.forEach(e => e.addEventListener("click", () => setOperation(e.textContent)));
+evaluate.addEventListener("click", () => calculate());
 
 
 function add(a,b) {
@@ -41,7 +43,7 @@ function addElement(element) {
     }
 }
 
-function clearContent() {
+function clearCurrent() {
     current.textContent = "";
 }
 
@@ -49,6 +51,46 @@ function deleteLast() {
     current.textContent = current.textContent.toString().slice(0,-1);
 }
 
-function setOperation(operation) {
-    return operation;
+
+function setOperation(newOperand) {
+    operand = newOperand;
+    firstNumber = current.textContent;
+    clearCurrent();
+}
+
+function getOperation() {
+    return operand;
+}
+
+
+
+function calculate(first, operation) {
+    first = parseFloat(firstNumber);
+    operation = getOperation();
+    let secondNumber = parseFloat(current.textContent);
+    let result = "";
+    switch (operation) {
+        case "+":
+            result = add(first, secondNumber)
+            clearCurrent();
+            current.textContent = result;
+            break;
+        case "-":
+            result = minus(first, secondNumber)
+            clearCurrent();
+            current.textContent = result;
+            break;
+        case "*":
+            result = multiply(first, secondNumber)
+            clearCurrent();
+            current.textContent = result;
+            break;
+        case "/":
+            result = divide(first, secondNumber)
+            clearCurrent();
+            current.textContent = result;
+            break;
+        default:
+    }
+    
 }

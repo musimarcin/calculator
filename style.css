@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@600&display=swap');
+
 body {
     display: flex;
     align-items: center;
@@ -8,7 +10,8 @@ body {
     display: flex;
     flex-direction: column;
     width: 300px;
-    border: 2px red solid;
+    border: 5px gray solid;
+    border-radius: 15px;
     gap: 16px
 }
 
@@ -17,6 +20,10 @@ body {
     flex-direction: column;
     gap: 8px;
     padding: 16px;
+    font-family: 'Gabarito', sans-serif;
+    border-radius: 10px;
+    border: 3px black solid;
+    margin: 5px;
 }
 
 #last {
@@ -39,7 +46,7 @@ body {
 }
 
 .operand {
-    border: 2px blue solid;
+    border: 2px lightgray solid;
     border-radius: 8px;
     height: 64px;
     width: 64px;
