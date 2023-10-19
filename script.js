@@ -1,5 +1,6 @@
 const number = document.querySelectorAll(".number");
 const current = document.querySelector("#current");
+const last = document.querySelector("#last");
 const all_clear = document.querySelector("#AC");
 const clear = document.querySelector("#C");
 const operation = document.querySelectorAll(".operation");
@@ -56,7 +57,9 @@ function setOperation(newOperand) {
     operand = newOperand;
     firstNumber = current.textContent;
     clearCurrent();
+    last.textContent = firstNumber + " " + operand;
 }
+
 
 function getOperation() {
     return operand;
@@ -68,29 +71,29 @@ function calculate(first, operation) {
     first = parseFloat(firstNumber);
     operation = getOperation();
     let secondNumber = parseFloat(current.textContent);
-    let result = "";
+    let eq = "";
+    let result = 0;
     switch (operation) {
         case "+":
-            result = add(first, secondNumber)
-            clearCurrent();
-            current.textContent = result;
+            eq = add(first, secondNumber);
+            result = Math.round((eq + Number.EPSILON) * 1000) / 1000;
             break;
         case "-":
-            result = minus(first, secondNumber)
-            clearCurrent();
-            current.textContent = result;
+            eq = minus(first, secondNumber)
+            result = Math.round((eq + Number.EPSILON) * 1000) / 1000;
             break;
         case "*":
-            result = multiply(first, secondNumber)
-            clearCurrent();
-            current.textContent = result;
+            eq = multiply(first, secondNumber)
+            result = Math.round((eq + Number.EPSILON) * 1000) / 1000;
             break;
         case "/":
-            result = divide(first, secondNumber)
-            clearCurrent();
-            current.textContent = result;
+            eq = divide(first, secondNumber)
+            result = Math.round((eq + Number.EPSILON) * 1000) / 1000;
             break;
         default:
     }
-    
+    clearCurrent();
+    current.textContent = result.toString();
+    last.textContent += " " + secondNumber + " =";
+
 }
